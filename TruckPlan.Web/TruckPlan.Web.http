@@ -1,0 +1,6 @@
+@TruckPlan.Web_HostAddress = http://localhost:5166
+
+GET {{TruckPlan.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
