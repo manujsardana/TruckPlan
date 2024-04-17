@@ -10,9 +10,10 @@ namespace TruckPlan.Infrastructure.Services
         private readonly ILogger<CountryFromLocationService> _logger;
         private HttpClient _httpClient;
 
-        public CountryFromLocationService(IHttpClientFactory httpCLientFactory) 
+        public CountryFromLocationService(IHttpClientFactory httpCLientFactory, ILogger<CountryFromLocationService> logger) 
         {
             _httpClient = httpCLientFactory.CreateClient(@"CountryLocation.Api");
+            _logger = logger;
         }
         public async Task<string> GetCountryFromLocation(double lattitude, double longitude)
         {
@@ -25,7 +26,7 @@ namespace TruckPlan.Infrastructure.Services
             }
 
             var countryDto = await response.Content.ReadFromJsonAsync<CountryDto>();
-            return countryDto.CountryCode;
+            return await Task.FromResult(countryDto.CountryCode);
         }
     }
 

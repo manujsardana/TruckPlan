@@ -23,8 +23,8 @@ namespace TruckPlan.Infrastructure.Repositories
                                                             && (x.EndDate <= endDate.Date || x.EndDate is null)
                                                             && x.Distance > distance).ToDictionary(x => x.Id, y => y);
 
-            return _dbContext.Routes.Where(x => x.Country == country
-                                            && truckPlans.ContainsKey(x.TruckPlanId)).GroupBy(x => x.TruckPlanId).Count();
+            return await Task.FromResult(_dbContext.Routes.Where(x => x.Country == country
+                                            && truckPlans.ContainsKey(x.TruckPlanId)).GroupBy(x => x.TruckPlanId).Count());
 
         }
     }

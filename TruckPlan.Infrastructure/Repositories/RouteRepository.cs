@@ -21,12 +21,12 @@ namespace TruckPlan.Infrastructure.Repository
             (route as IIdGenerator).SetId(_dbContext.Routes.Count() +1);
             _dbContext.Routes.Add(route);
 
-            return route;
+            return await Task.FromResult(route);
         }
 
         public async Task<IEnumerable<Route>> GetRoutesByTruckPlanIdAsync(int truckPlanId)
         {
-            return _dbContext.Routes.Where(x => x.TruckPlanId == truckPlanId);
+            return await Task.FromResult(_dbContext.Routes.Where(x => x.TruckPlanId == truckPlanId));
         }
     }
 }

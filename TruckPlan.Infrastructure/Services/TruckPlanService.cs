@@ -8,7 +8,6 @@ namespace TruckPlan.Infrastructure.Services
     public class TruckPlanService : ITruckPlanService
     {
         private readonly ICountryFromLocationService _countryFromLocationService;
-        private readonly ILogger<TruckPlanService> _logger;
         private readonly ITruckPlanRepository _truckPlanRepository;
 
         public TruckPlanService(ICountryFromLocationService countryFromLOcationService,
@@ -17,7 +16,6 @@ namespace TruckPlan.Infrastructure.Services
         {
             _countryFromLocationService = countryFromLOcationService;
             _truckPlanRepository = truckPlanRepository;
-            _logger = logger;
         }
 
         public async Task AddRouteToTruckPlanAsync(Route route)

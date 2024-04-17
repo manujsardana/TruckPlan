@@ -19,12 +19,12 @@ namespace TruckPlan.Infrastructure.Repository
             (driver as IIdGenerator).SetId(_dbContext.Drivers.Count() + 1);
             _dbContext.Drivers.Add(driver);
 
-            return driver;
+            return await Task.FromResult(driver);
         }
 
         public async Task<List<Driver>> GetAllDriversAsync()
         {
-            return _dbContext.Drivers.ToList();
+            return await Task.FromResult(_dbContext.Drivers.ToList());
         }
     }
 }

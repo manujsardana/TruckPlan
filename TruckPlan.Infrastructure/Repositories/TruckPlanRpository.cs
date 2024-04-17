@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using TruckPlan.Domain;
+﻿using TruckPlan.Domain;
 using TruckPlan.Domain.Interfaces;
 using TruckPlan.Domain.Interfaces.Repositories;
 using TruckPlan.Infrastructure.Exception;
@@ -35,12 +34,12 @@ namespace TruckPlan.Infrastructure.Repository
             (truckPlan as IIdGenerator).SetId(_dbContext.TruckPlans.Count() + 1);
             _dbContext.TruckPlans.Add(truckPlan);
 
-            return truckPlan;
+            return await Task.FromResult(truckPlan);
         }
 
         public async Task<List<Domain.TruckPlan>> GetAllTruckPlansAsync()
         {
-            return _dbContext.TruckPlans.ToList();
+            return await Task.FromResult(_dbContext.TruckPlans.ToList());
         }
     }
 }

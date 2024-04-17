@@ -21,7 +21,7 @@ namespace TruckPlan.Tests.Repositories
            
         }
 
-        //Usually it might be a good idea to generate the test data for particulae scenario so its easier to maintain
+        //Usually it might be a good idea to generate the test data for particular scenario so its easier to maintain
         // but generting to test all scenarios for now
         private async Task AddTestData()
         {

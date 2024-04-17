@@ -19,11 +19,11 @@ namespace TruckPlan.Infrastructure.Repository
             (truck as IIdGenerator).SetId(_dbContext.Trucks.Count() + 1);
             _dbContext.Trucks.Add(truck);
 
-            return truck;
+            return await Task.FromResult(truck);
         }
         public async Task<List<Truck>> GetAllTrucksAsync()
         {
-            return _dbContext.Trucks.ToList();
+            return await Task.FromResult(_dbContext.Trucks.ToList());
         }
     }
 }
